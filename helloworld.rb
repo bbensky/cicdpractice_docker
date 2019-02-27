@@ -1,13 +1,13 @@
 require 'sinatra'
 
 get '/' do
-  if params[:name]
-    "Hello #{params[:name]}!"
-  else
-    "Hello World!"
-  end
+  "Hello World!"
 end
 
 get '/:name' do
   "Hello #{params[:name]}!"
+end
+
+get '/:first_name/:last_name' do
+  "Hello #{params[:first_name]} #{params[:last_name]}!"
 end
