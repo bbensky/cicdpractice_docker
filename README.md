@@ -1,1 +1,0 @@
-# cicdpractice_docker
