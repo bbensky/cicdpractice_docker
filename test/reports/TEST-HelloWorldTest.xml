@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite time='0.015466' skipped='0' failures='0' errors='0' name="HelloWorldTest" assertions='3' tests='1' timestamp="2019-03-01T12:46:30-07:00">
+  <testcase time='0.015466' file="test/test_helloworld.rb" name="test_hello_world" assertions='3'>
+  </testcase>
+</testsuite>

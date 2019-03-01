@@ -5,4 +5,24 @@ jobs:
       - image: circleci/ruby:2.5.1
     steps:
       - checkout
-      - run: echo "A first hello"
+
+      # Restore bundle cache
+      - type: cache-restore
+        key: hello-world-{{ checksum "Gemfile.lock"}}
+
+      # Bundle install dependencies
+      - run: bundle install --path vendor/bundle
+
+      # Store bundle cache
+      - type: cache-save
+      - key: sinatra-demo-{{ checksum "Gemfile.lock" }}
+        paths: 
+          - vendor/bundle
+
+      # Run minitest
+      - type: shell
+        command: bundle exec rake
+
+      # Save artifacts
+      - type: store_test_results
+        path: /tmp/test-results

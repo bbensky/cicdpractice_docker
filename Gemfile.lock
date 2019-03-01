@@ -1,10 +1,16 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    minitest (5.11.3)
+    minitest-ci (3.4.0)
+      minitest (>= 5.0.6)
     mustermann (1.0.3)
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
+    rake (12.3.2)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -16,6 +22,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  minitest
+  minitest-ci
+  rack
+  rack-test
+  rake
   sinatra
 
 BUNDLED WITH
