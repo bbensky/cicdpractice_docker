@@ -5,12 +5,7 @@ jobs:
       - image: circleci/ruby:2.5.1
         environment: 
         TESTOPTS: "--ci-dir=/tmp/test-results"
-test:
-  override:
-    - bundle exec rake test:
-        parallel: true
-        files:
-          - test/**/*.rb
+
     steps:
       - checkout
 
