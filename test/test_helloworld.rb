@@ -14,6 +14,6 @@ class HelloWorldTest < Minitest::Test
     get '/'
 
     assert last_response.ok?
-    assert_includes last_response.body, "Howdy"
+    assert_includes last_response.body, "Hello"
   end
 end
