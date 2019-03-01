@@ -7,22 +7,25 @@ jobs:
       - checkout
 
       # Restore bundle cache
-      - type: cache-restore
-        key: hello-world-{{ checksum "Gemfile.lock"}}
+      - restore_cache:
+          key: hello-world-{{ checksum "Gemfile.lock"}}
 
       # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
+      - run: 
+          name: install-dependencies
+          command: bundle install --path vendor/bundle
 
       # Store bundle cache
-      - type: cache-save
-      - key: sinatra-demo-{{ checksum "Gemfile.lock" }}
-        paths: 
-          - vendor/bundle
+      - save_cache:
+          key: sinatra-demo-{{ checksum "Gemfile.lock" }}
+          paths: 
+            - vendor/bundle
 
       # Run minitest
-      - type: shell
-        command: bundle exec rake
+      - run:
+          name: test
+          command: bundle exec rake
 
       # Save artifacts
-      - type: store_test_results
-        path: /tmp/test-results
+      - store_test_results:
+          path: /tmp/test-results
