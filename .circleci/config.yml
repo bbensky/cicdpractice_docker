@@ -33,6 +33,9 @@ jobs:
       - store_test_results:
           path: $CIRCLE_TEST_REPORTS/test-results
 
+      - setup_remote_docker:
+          docker_layer_caching: true
+
       # Build image and push to Docker Hub
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
