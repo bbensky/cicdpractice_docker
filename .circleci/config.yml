@@ -60,9 +60,8 @@ jobs:
       - run:
           name: pull and run new version of service
           command: |
-            TAG=0.1.$CIRCLE_BUILD_NUM
-            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo:$TAG"
-            ssh ubuntu@34.254.188.32 "docker run -d -name helloworld -p 4567:4567 ethnopunk/docker_repo:$TAG"
+            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo"
+            ssh ubuntu@34.254.188.32 "docker run -d -name helloworld -p 4567:4567 ethnopunk/docker_repo"
 
 workflows:
   version: 2
