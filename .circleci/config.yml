@@ -53,11 +53,14 @@ jobs:
           fingerprints:
             - "54:66:66:c5:d9:0c:c5:4b:c6:b0:29:60:d1:a5:cb:9d"
       - run:
-          name: SSH into EC2 instance
+          name: stop running existing version of service
           command: |
             ssh ubuntu@34.254.188.32 "docker kill helloworld"
             ssh ubuntu@34.254.188.32 "docker rm helloworld"
-            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo:$TAG ."
+      - run:
+          name: pull and run new version of service
+            command: |
+            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo:$TAG"
             ssh ubuntu@34.254.188.32 "docker run -d -name helloworld -p 4567:4567 ethnopunk/docker_repo:$TAG"
 
 workflows:
