@@ -55,8 +55,8 @@ jobs:
       - run:
           name: stop running existing version of service
           command: |
-            ssh ubuntu@34.254.188.32 "docker kill helloworld"
-            ssh ubuntu@34.254.188.32 "docker rm helloworld"
+            ssh ubuntu@34.254.188.32 "docker kill helloworld || export SOME_TEST_FAILED=true"
+            ssh ubuntu@34.254.188.32 "docker rm helloworld || export SOME_TEST_FAILED=true"
       - run:
           name: pull and run new version of service
           command: |
