@@ -59,7 +59,7 @@ jobs:
             ssh ubuntu@34.254.188.32 "docker rm helloworld"
       - run:
           name: pull and run new version of service
-            command: |
+          command: |
             ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo:$TAG"
             ssh ubuntu@34.254.188.32 "docker run -d -name helloworld -p 4567:4567 ethnopunk/docker_repo:$TAG"
 
