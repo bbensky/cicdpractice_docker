@@ -33,6 +33,7 @@ jobs:
       - store_test_results:
           path: $CIRCLE_TEST_REPORTS/test-results
 
+      # Create Docker build environment
       - setup_remote_docker:
           docker_layer_caching: true
 
@@ -42,3 +43,25 @@ jobs:
           docker build -t ethnopunk/docker_repo:$TAG .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker push ethnopunk/docker_repo
+
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "54:66:66:c5:d9:0c:c5:4b:c6:b0:29:60:d1:a5:cb:9d"
+      - run:
+          name: SSH into EC2 instance
+          command: 
+            ssh ubuntu@34.254.188.32 "echo hello"
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
