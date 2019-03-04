@@ -39,9 +39,9 @@ jobs:
 
       # Build image and push to Docker Hub
       - run: |
-          docker build -t ethnopunk/docker_repo:latest .
+          docker build -t ethnopunk/docker_repo:$CIRCLE_SHA1 .
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker push ethnopunk/docker_repo
+          docker push ethnopunk/docker_repo:$CIRCLE_SHA1
 
 
   deploy:
@@ -59,8 +59,8 @@ jobs:
       - run:
           name: pull and run new version of service
           command: |
-            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo"
-            ssh ubuntu@34.254.188.32 "docker run -d --name helloworld -p 4567:4567 ethnopunk/docker_repo"
+            ssh ubuntu@34.254.188.32 "docker pull ethnopunk/docker_repo:$CIRCLE_SHA1"
+            ssh ubuntu@34.254.188.32 "docker run -d --name helloworld -p 4567:4567 ethnopunk/docker_repo:$CIRCLE_SHA1"
 
 workflows:
   version: 2
