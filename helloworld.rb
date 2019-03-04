@@ -8,6 +8,10 @@ get '/cleveland' do
   "Hello Cleveland!"
 end
 
+get '/please' do
+  "Hello Please!"
+end
+
 get '/:name' do
   "Hello #{params[:name]}!"
 end
