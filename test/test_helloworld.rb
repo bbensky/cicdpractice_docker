@@ -16,4 +16,11 @@ class HelloWorldTest < Minitest::Test
     assert last_response.ok?
     assert_includes last_response.body, "Hello"
   end
+
+  def test_hello_universe
+    get '/morethanworld'
+
+    assert last_response.ok?
+    assert_includes last_response.body, "Universe"
+  end
 end
