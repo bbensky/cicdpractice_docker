@@ -12,6 +12,10 @@ get '/please' do
   "Hello Please!"
 end
 
+get '/morethanworld'
+  "Hello Universe!"
+end
+
 get '/:name' do
   "Hello #{params[:name]}!"
 end
