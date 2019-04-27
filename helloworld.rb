@@ -12,7 +12,7 @@ get '/please' do
   "Hello Please!"
 end
 
-get '/morethanworld'
+get '/morethanworld' do
   "Hello Universe!"
 end
 
